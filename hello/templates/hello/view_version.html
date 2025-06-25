@@ -1,0 +1,18 @@
+{% extends 'hello/base.html' %}
+
+{% block title %}View Version{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Version from {{ version.timestamp|date:"F j, Y, g:i a" }}{% if version.editor %} by {{ version.editor.username }}{% endif %}</h2>
+    
+    <div class="card bg-dark text-light p-3 mb-3">
+        <div class="editor" contenteditable="false" id="view-version-content" spellcheck="false">
+            {{ version.content|safe }}
+        </div>
+    </div>
+    
+    <a href="{% url 'version_history' doc_id=document.id %}" class="btn btn-secondary">Back to Version History</a>
+    <a href="{% url 'editor' doc_id=document.id %}" class="btn btn-primary">Back to Editor</a>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'hello/base.html' %}
+
+{% block title %}Revert to Version{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Revert "{{ document.title }}" to the selected version</h2>
+    <p>Are you sure you want to revert this document to the version from {{ version.timestamp|date:"F j, Y, g:i a" }}{% if version.editor %} by {{ version.editor.username }}{% endif %}? This action will overwrite the current content.</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Revert</button>
+        <a href="{% url 'version_history' doc_id=document.id %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

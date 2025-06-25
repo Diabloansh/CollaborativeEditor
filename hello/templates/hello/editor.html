@@ -1,0 +1,62 @@
+{% extends 'hello/base.html' %}
+{% load static %}
+
+{% block title %}Collaborative Editor{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="editor-container bg-dark text-light shadow rounded p-4">
+        <!-- Toolbar with formatting buttons -->
+        <div class="toolbar d-flex flex-wrap gap-2 mb-3">
+            <button class="btn btn-outline-light" onclick="formatText('bold')" title="Bold"><b>B</b></button>
+            <button class="btn btn-outline-light" onclick="formatText('italic')" title="Italic"><i>I</i></button>
+            <button class="btn btn-outline-light" onclick="formatText('underline')" title="Underline"><u>U</u></button>
+            <button class="btn btn-outline-light" onclick="formatText('strikeThrough')" title="Strikethrough"><s>S</s></button>
+            <button class="btn btn-outline-light" onclick="formatText('justifyLeft')" title="Align Left">Left</button>
+            <button class="btn btn-outline-light" onclick="formatText('justifyCenter')" title="Center">Center</button>
+            <button class="btn btn-outline-light" onclick="formatText('justifyRight')" title="Align Right">Right</button>
+            <button class="btn btn-outline-light" onclick="formatText('insertOrderedList')" title="Numbered List">1.</button>
+            <button class="btn btn-outline-light" onclick="formatText('insertUnorderedList')" title="Bulleted List">•</button>
+            <button class="btn btn-outline-light" onclick="duplicateLine()" title="Duplicate Line">Duplicate Line</button>
+
+            <!-- Dropdown for download types -->
+            <div class="dropdown">
+                <select id="downloadType" class="form-select bg-dark text-light border-light">
+                    <option value="html">Download as .html</option>
+                    <option value="txt">Download as .txt</option>
+                    <option value="doc">Download as .doc</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="downloadFile()">Download</button>
+        </div>
+
+        <!-- Link to Version History -->
+        <div class="d-flex justify-content-end mb-3">
+            <a href="{% url 'version_history' doc_id=doc_id %}" class="btn btn-outline-secondary btn-sm">Version History</a>
+        </div>
+        
+        <!-- Search and Replace Inputs -->
+        <div class="search-replace d-flex gap-2 mb-3">
+            <input type="text" id="searchText" class="form-control bg-dark text-light border-light" placeholder="Find">
+            <input type="text" id="replaceText" class="form-control bg-dark text-light border-light" placeholder="Replace">
+            <button class="btn btn-secondary" onclick="searchAndReplace()" title="Search and Replace">Replace</button>
+        </div>
+
+        <!-- Editable Content Area -->
+        <div class="editor border p-3" contenteditable="true" id="editor" spellcheck="true"></div>
+
+
+        <!-- Typing Indicator -->
+        <div id="typing-indicator" class="mt-2"></div>
+    </div>
+</div>
+
+<!-- Pass variables to editor.js and include the script -->
+<script>
+    window.currentUser = '{{ user.username|escapejs }}';
+    window.docId = '{{ doc_id|escapejs }}';
+</script>
+
+<script src="{% static 'hello/editor.js' %}"></script>
+
+{% endblock %}

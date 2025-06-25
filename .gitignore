@@ -1,0 +1,15 @@
+# Ignore virtual environment directories
+venv/
+.venv/
+env/
+# Python
+__pycache__/
+*.py[cod]
+# Node
+node_modules/
+dist/
+# OS
+.DS_Store
+# IDE/editor
+.vscode/
+*.suo

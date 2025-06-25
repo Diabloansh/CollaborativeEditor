@@ -1,0 +1,18 @@
+{% extends 'hello/base.html' %}
+{% load static %}
+
+{% block title %}Error{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">An Error Occurred</h4>
+        <p>{{ message }}</p>
+        <hr>
+        <p class="mb-0">
+            <a href="{% url 'document_list' %}" class="btn btn-primary">Back to Documents</a>
+            <a href="{% url 'create_document' %}" class="btn btn-secondary">Create New Document</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'hello/base.html' %}
+{% load static %}
+
+{% block title %}Create New Document{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Create a New Document</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Document Title:</label>
+            <input type="text" id="title" name="title" class="form-control bg-secondary text-light border-0" placeholder="Enter document title" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Document</button>
+        <a href="{% url 'document_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

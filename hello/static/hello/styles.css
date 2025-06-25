@@ -1,0 +1,227 @@
+
+:root {
+  --background-color: #1f1f2f;
+  --secondary-background: #1a1a26;
+  --text-color: #e0e0e0;
+  --card-color: #2b2b3d;
+  --primary-gradient-start: #5a5aec;
+  --primary-gradient-end: #3f3fae;
+  --hover-color: #3c3c4e;
+  --border-color: #444;
+  --shadow-light: rgba(0, 0, 0, 0.2);
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --placeholder-color: #aaaaaa;
+}
+
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(180deg, var(--background-color), var(--secondary-background));
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+  box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+.nav-link {
+  color: #bbbbcc !important;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+}
+
+.btn-outline-light {
+  color: var(--text-color);
+  border-color: var(--primary-gradient-start);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--primary-gradient-start);
+  color: #ffffff;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
+  border: none;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, var(--primary-gradient-end), var(--primary-gradient-start));
+  transform: scale(1.05);
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--card-color);
+  border-radius: 15px;
+  box-shadow: 0 6px 12px var(--shadow-light);
+}
+
+/* Form Controls */
+.form-control {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-gradient-start);
+  box-shadow: 0 0 8px rgba(90, 90, 236, 0.5);
+}
+
+.form-control::placeholder {
+  color: var(--placeholder-color);
+}
+
+/* Tables */
+.table-dark {
+  background-color: var(--card-color);
+  color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-dark th,
+.table-dark td {
+  border-color: var(--border-color);
+}
+
+.table-dark tbody tr:hover {
+  background-color: var(--hover-color);
+}
+
+/* Editor Container */
+.editor-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 10px;
+  box-shadow: 0 6px 15px var(--shadow-dark);
+}
+
+.editor {
+  width: 100%;
+  height: 400px;
+  padding: 10px;
+  background-color: #121212;
+  color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  overflow-y: auto;
+  font-size: 1rem;
+}
+
+.editor:focus {
+  outline: none;
+  border-color: var(--primary-gradient-start);
+  box-shadow: 0 0 8px rgba(90, 90, 236, 0.5);
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.toolbar button {
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toolbar button:hover {
+  background-color: var(--hover-color);
+  color: #ffffff;
+}
+
+/* Typing Indicator */
+#typing-indicator {
+  font-size: 0.9rem;
+  color: #bbbbcc;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* Search and Replace Inputs */
+.search-replace input {
+  padding: 8px;
+  font-size: 0.9rem;
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.search-replace button {
+  background: var(--primary-gradient-start);
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.search-replace button:hover {
+  background: var(--primary-gradient-end);
+}
+
+/* Footer */
+footer {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 10px 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+footer a {
+  color: var(--primary-gradient-start);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    justify-content: center;
+  }
+
+  .editor-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar button {
+    flex: 1;
+    text-align: center;
+  }
+}
