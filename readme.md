@@ -63,9 +63,10 @@ Before you begin, ensure you have met the following requirements:
 ---
 ## Project Structure
 
+```plaintext
 collaborative-text-editor/
 ├── web_project/
-│   ├── _init__.py
+│   ├── __init__.py
 │   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
@@ -102,6 +103,7 @@ collaborative-text-editor/
 ├── manage.py
 ├── requirements.txt
 └── README.md
+```
 
 
 

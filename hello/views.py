@@ -15,6 +15,11 @@ from .forms import ShareDocumentForm
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.db import transaction
+from typing import Optional, Union
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseForbidden
+from django.core.cache import cache
+from django.views.decorators.http import require_http_methods
 
 # Configure logging
 logger = logging.getLogger(__name__)
